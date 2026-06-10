@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INTL Website Creation — Professional Websites. Powerful Results.</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Barlow+Condensed:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:      #04091A;
+    --navy-card: #080F22;
+    --navy-mid:  #0C1530;
+    --blue:      #1A6EF5;
+    --blue-light:#4B9FFF;
+    --blue-glow: rgba(26,110,245,0.35);
+    --silver:    #A8C4E8;
+    --white:     #E8F0FC;
+    --dim:       #4A6080;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    height: 70px;
+    background: rgba(4,9,26,0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(26,110,245,0.15);
+  }
+  .nav-logo {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900; font-size: 1.4rem;
+    letter-spacing: 0.1em; color: #fff;
+  }
+  .nav-logo span { color: var(--blue-light); }
+  .nav-sub { font-family: 'Barlow Condensed', sans-serif; font-size: 0.6rem;
+    letter-spacing: 0.35em; color: var(--silver); display: block; margin-top: -4px; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--silver); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--blue-light); }
+  .nav-cta {
+    background: var(--blue); color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 10px 22px; border: none; cursor: pointer;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    transition: background 0.2s, box-shadow 0.2s;
+    text-decoration: none; display: inline-block;
+  }
+  .nav-cta:hover { background: var(--blue-light); box-shadow: 0 0 20px var(--blue-glow); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 120px 5% 80px;
+    position: relative; overflow: hidden;
+  }
+
+  /* Grid background */
+  #hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(26,110,245,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26,110,245,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 60% 50%, black 30%, transparent 100%);
+  }
+
+  /* Radial glow */
+  #hero::after {
+    content: '';
+    position: absolute;
+    right: 5%; top: 50%; transform: translateY(-50%);
+    width: 620px; height: 620px;
+    background: radial-gradient(circle, rgba(26,110,245,0.2) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-content { position: relative; z-index: 2; max-width: 640px; }
+
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--blue-light); margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 32px; height: 1px; background: var(--blue);
+  }
+
+  h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 900; line-height: 1.05;
+    letter-spacing: -0.01em; color: #fff;
+    margin-bottom: 0.4rem;
+  }
+  h1 .accent { color: var(--blue-light); display: block; }
+
+  .hero-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.15rem; font-weight: 300; color: var(--silver);
+    max-width: 460px; line-height: 1.6; margin: 1.6rem 0 2.4rem;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+
+  .btn-primary {
+    background: var(--blue); color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem; letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 14px 32px; border: none; cursor: pointer; text-decoration: none;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    transition: background 0.2s, box-shadow 0.2s; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--blue-light); box-shadow: 0 0 30px var(--blue-glow); }
+
+  .btn-outline {
+    background: transparent; color: var(--silver);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem; letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 13px 32px; border: 1px solid rgba(168,196,232,0.3); cursor: pointer;
+    text-decoration: none; display: inline-block;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--blue-light); color: var(--blue-light); }
+
+  .hero-stats { display: flex; gap: 2.5rem; }
+  .stat-num {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem; font-weight: 700; color: #fff;
+  }
+  .stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--dim); margin-top: 2px;
+  }
+
+  /* ORBIT SIGNATURE ELEMENT */
+  .orbit-wrap {
+    position: absolute; right: 8%; top: 50%; transform: translateY(-50%);
+    width: 500px; height: 500px; z-index: 1;
+  }
+  .orbit-ring {
+    position: absolute; border-radius: 50%;
+    border: 1px solid rgba(26,110,245,0.35);
+  }
+  .orbit-ring.r1 {
+    width: 480px; height: 480px; top: 10px; left: 10px;
+    border-color: rgba(26,110,245,0.2);
+    animation: spin 28s linear infinite;
+  }
+  .orbit-ring.r1::after {
+    content: ''; position: absolute;
+    width: 8px; height: 8px; background: var(--blue-light);
+    border-radius: 50%; top: -4px; left: 50%; transform: translateX(-50%);
+    box-shadow: 0 0 12px var(--blue-light);
+  }
+  .orbit-ring.r2 {
+    width: 360px; height: 360px; top: 70px; left: 70px;
+    border-color: rgba(26,110,245,0.3);
+    animation: spin 18s linear infinite reverse;
+  }
+  .orbit-ring.r2::after {
+    content: ''; position: absolute;
+    width: 6px; height: 6px; background: #fff;
+    border-radius: 50%; bottom: -3px; left: 50%; transform: translateX(-50%);
+    box-shadow: 0 0 8px #fff;
+  }
+  .orbit-ring.r3 {
+    width: 240px; height: 240px; top: 130px; left: 130px;
+    border-color: rgba(75,159,255,0.4);
+    animation: spin 12s linear infinite;
+  }
+  .orbit-ring.r3::after {
+    content: ''; position: absolute;
+    width: 5px; height: 5px; background: var(--blue-light);
+    border-radius: 50%; right: -2.5px; top: 50%; transform: translateY(-50%);
+    box-shadow: 0 0 8px var(--blue-light);
+  }
+  .orbit-core {
+    position: absolute; width: 80px; height: 80px;
+    top: 210px; left: 210px; border-radius: 50%;
+    background: radial-gradient(circle, var(--blue) 0%, rgba(26,110,245,0.2) 60%, transparent 100%);
+    box-shadow: 0 0 40px var(--blue-glow), 0 0 80px rgba(26,110,245,0.15);
+  }
+  /* dot grid globe */
+  .orbit-dots {
+    position: absolute; inset: 80px;
+    background-image: radial-gradient(circle, rgba(168,196,232,0.5) 1px, transparent 1px);
+    background-size: 18px 18px;
+    border-radius: 50%;
+    mask-image: radial-gradient(ellipse 70% 90% at 50% 50%, black 60%, transparent 100%);
+    opacity: 0.35;
+  }
+
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  /* ── PROCESS BAR ── */
+  .process-bar {
+    background: var(--navy-mid);
+    border-top: 1px solid rgba(26,110,245,0.1);
+    border-bottom: 1px solid rgba(26,110,245,0.1);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: center;
+    gap: 0;
+  }
+  .process-step {
+    display: flex; align-items: center;
+    padding: 1.4rem 3rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--dim); gap: 0.6rem;
+    border-right: 1px solid rgba(26,110,245,0.1);
+    transition: color 0.2s;
+  }
+  .process-step:last-child { border-right: none; }
+  .process-step:hover { color: var(--blue-light); }
+  .step-num {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.65rem; color: var(--blue);
+    margin-right: 2px;
+  }
+  .step-arrow { color: var(--blue); opacity: 0.5; margin: 0 0.5rem; }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: 100px 5%; }
+  .section-eye {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.72rem; letter-spacing: 0.45em; text-transform: uppercase;
+    color: var(--blue-light); margin-bottom: 0.8rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .section-eye::before { content:''; width:20px; height:1px; background:var(--blue); }
+  h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 700; color: #fff;
+    line-height: 1.15; margin-bottom: 0.5rem;
+  }
+  .section-intro {
+    font-size: 1rem; color: var(--silver); max-width: 500px;
+    line-height: 1.7; margin-top: 0.8rem;
+  }
+
+  /* ── SERVICES ── */
+  #services { background: var(--navy-card); position: relative; overflow: hidden; }
+  #services::before {
+    content: '';
+    position: absolute; top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(26,110,245,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .services-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3.5rem; flex-wrap: wrap; gap: 1rem; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5px;
+    background: rgba(26,110,245,0.08);
+    border: 1px solid rgba(26,110,245,0.12);
+  }
+  .svc-card {
+    background: var(--navy);
+    padding: 2.5rem 2rem;
+    transition: background 0.25s;
+    position: relative; overflow: hidden;
+    cursor: default;
+  }
+  .svc-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 2px; background: var(--blue);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .svc-card:hover { background: var(--navy-mid); }
+  .svc-card:hover::after { transform: scaleX(1); }
+  .svc-icon {
+    width: 48px; height: 48px; margin-bottom: 1.4rem;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(26,110,245,0.3);
+    color: var(--blue-light);
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+  .svc-card:hover .svc-icon {
+    border-color: var(--blue);
+    box-shadow: 0 0 16px var(--blue-glow);
+  }
+  .svc-icon svg { width: 22px; height: 22px; }
+  .svc-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.1rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: #fff; margin-bottom: 0.6rem;
+  }
+  .svc-desc {
+    font-size: 0.88rem; color: var(--silver); line-height: 1.65;
+  }
+
+  /* ── WHY US ── */
+  #why { position: relative; }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem; margin-top: 3.5rem;
+  }
+  .why-card {
+    padding: 2rem 1.8rem;
+    border: 1px solid rgba(26,110,245,0.1);
+    background: var(--navy-card);
+    position: relative; overflow: hidden;
+    transition: border-color 0.25s;
+  }
+  .why-card:hover { border-color: rgba(26,110,245,0.4); }
+  .why-icon {
+    font-size: 1.8rem; margin-bottom: 1.2rem; display: block;
+    filter: drop-shadow(0 0 6px var(--blue-glow));
+  }
+  .why-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: #fff; margin-bottom: 0.5rem;
+  }
+  .why-text { font-size: 0.87rem; color: var(--silver); line-height: 1.65; }
+
+  /* ── WORK ── */
+  #work { background: var(--navy-card); }
+  .work-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem; }
+  .work-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 280px 280px;
+    gap: 1.5px;
+  }
+  .work-item {
+    background: var(--navy-mid);
+    position: relative; overflow: hidden; cursor: pointer;
+    display: flex; align-items: flex-end;
+  }
+  .work-item:first-child { grid-row: span 2; }
+  .work-bg {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    transition: transform 0.5s;
+    filter: brightness(0.5) saturate(0.7);
+  }
+  .work-item:hover .work-bg { transform: scale(1.04); filter: brightness(0.6) saturate(0.8); }
+  .work-overlay {
+    position: relative; z-index: 2; padding: 1.4rem;
+    background: linear-gradient(0deg, rgba(4,9,26,0.9) 0%, transparent 100%);
+    width: 100%;
+  }
+  .work-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--blue-light); margin-bottom: 0.3rem;
+  }
+  .work-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.05rem; font-weight: 600; color: #fff;
+    letter-spacing: 0.05em;
+  }
+  /* Mock gradients for portfolio items */
+  .bg-1 { background: linear-gradient(135deg, #0C1D40 0%, #1A3A6B 100%); }
+  .bg-2 { background: linear-gradient(135deg, #0A1A30 0%, #0D3060 100%); }
+  .bg-3 { background: linear-gradient(135deg, #050D20 0%, #142850 100%); }
+  .bg-4 { background: linear-gradient(135deg, #080F22 0%, #1a2a50 100%); }
+  .bg-5 { background: linear-gradient(135deg, #040A18 0%, #0F2040 100%); }
+  /* Grid overlays to simulate UI screenshots */
+  .bg-ui {
+    background-image:
+      linear-gradient(rgba(26,110,245,0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26,110,245,0.08) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* ── CTA ── */
+  #cta {
+    text-align: center;
+    background: var(--navy);
+    padding: 100px 5%;
+    position: relative; overflow: hidden;
+  }
+  #cta::before {
+    content: '';
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 800px; height: 400px;
+    background: radial-gradient(ellipse, rgba(26,110,245,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-inner { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; }
+  .cta-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(1.8rem, 3.5vw, 3rem);
+    font-weight: 900; color: #fff; margin-bottom: 1.2rem;
+    line-height: 1.1;
+  }
+  .cta-title span { color: var(--blue-light); }
+  .cta-sub { font-size: 1rem; color: var(--silver); line-height: 1.65; margin-bottom: 2.5rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy-card);
+    border-top: 1px solid rgba(26,110,245,0.1);
+    padding: 60px 5% 32px;
+  }
+  .footer-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand { max-width: 280px; }
+  .footer-logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.4rem; font-weight: 900; color: #fff; margin-bottom: 0.6rem;
+  }
+  .footer-logo span { color: var(--blue-light); }
+  .footer-tagline { font-size: 0.85rem; color: var(--dim); line-height: 1.6; margin-top: 0.6rem; }
+  .footer-col h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--blue-light); margin-bottom: 1rem;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .footer-col ul a {
+    font-size: 0.87rem; color: var(--dim); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-col ul a:hover { color: var(--white); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 1.4rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-copy {
+    font-size: 0.78rem; color: var(--dim);
+    font-family: 'Barlow Condensed', sans-serif; letter-spacing: 0.1em;
+  }
+  .footer-socials { display: flex; gap: 1rem; }
+  .social-btn {
+    width: 34px; height: 34px; border: 1px solid rgba(26,110,245,0.2);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--dim); text-decoration: none; font-size: 0.8rem;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .social-btn:hover { border-color: var(--blue); color: var(--blue-light); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .orbit-wrap { display: none; }
+    .work-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .work-item:first-child { grid-row: span 1; grid-column: span 2; }
+    .process-bar { flex-wrap: wrap; }
+    .process-step { border: none; padding: 1rem 1.5rem; }
+    nav .nav-links { display: none; }
+  }
+  @media (max-width: 600px) {
+    h1 { font-size: 2rem; }
+    .hero-stats { gap: 1.5rem; }
+    .work-grid { grid-template-columns: 1fr; }
+    .work-item:first-child { grid-column: span 1; }
+    .services-header { flex-direction: column; align-items: flex-start; }
+    .work-header { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .orbit-ring { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    INT<span>L</span>
+    <span class="nav-sub">Website Creation</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#why">About</a></li>
+    <li><a href="#cta">Contact</a></li>
+  </ul>
+  <a href="#" class="nav-cta" onclick="openModal();return false;">Get Started</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Custom Digital Experiences</div>
+    <h1>
+      Building Websites
+      <span class="accent">That Drive Success.</span>
+    </h1>
+    <p class="hero-sub">We design and develop modern, high-performing websites that elevate brands and convert visitors into loyal customers.</p>
+    <div class="hero-btns">
+      <a href="#" class="btn-primary" onclick="openModal();return false;">Start Your Project</a>
+      <a href="#work" class="btn-outline">View Our Work</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">150+</div>
+        <div class="stat-label">Projects Delivered</div>
+      </div>
+      <div>
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Client Satisfaction</div>
+      </div>
+      <div>
+        <div class="stat-num">12+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIGNATURE: Orbit Globe -->
+  <div class="orbit-wrap" aria-hidden="true">
+    <div class="orbit-dots"></div>
+    <div class="orbit-ring r1"></div>
+    <div class="orbit-ring r2"></div>
+    <div class="orbit-ring r3"></div>
+    <div class="orbit-core"></div>
+  </div>
+</section>
+
+<!-- PROCESS BAR -->
+<div class="process-bar">
+  <div class="process-step"><span class="step-num">01</span> Design</div>
+  <div class="step-arrow">›</div>
+  <div class="process-step"><span class="step-num">02</span> Develop</div>
+  <div class="step-arrow">›</div>
+  <div class="process-step"><span class="step-num">03</span> Launch</div>
+  <div class="step-arrow">›</div>
+  <div class="process-step"><span class="step-num">04</span> Grow</div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header">
+    <div>
+      <div class="section-eye">What We Do</div>
+      <h2>Services Built<br>For Results</h2>
+    </div>
+    <p class="section-intro">Every service is engineered with one goal: making your business measurably stronger online.</p>
+  </div>
+  <div class="services-grid">
+    <div class="svc-card">
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      </div>
+      <div class="svc-name">Web Design</div>
+      <p class="svc-desc">Purposeful, brand-true interfaces built to captivate and convert. Every pixel earns its place on the page.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </div>
+      <div class="svc-name">Web Creation</div>
+      <p class="svc-desc">Complete websites built from scratch — from domain setup to go-live, we handle every part of bringing your online presence to life.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      </div>
+      <div class="svc-name">Website Development</div>
+      <p class="svc-desc">Clean, performant code that powers fast-loading, secure, and scalable websites ready to handle real traffic and grow with your business.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="section-eye">Why INTL</div>
+  <h2>The Standard We<br>Hold Ourselves To</h2>
+  <div class="why-grid">
+    <div class="why-card">
+      <span class="why-icon">🛡</span>
+      <div class="why-title">Tailored Solutions</div>
+      <p class="why-text">No templates, no shortcuts. Every site is built from the ground up around your brand's unique goals and audience.</p>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">⚡</span>
+      <div class="why-title">Fast &amp; Reliable</div>
+      <p class="why-text">Sub-second load times, 99.9% uptime infrastructure, and security-first architecture built for peace of mind.</p>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">🎯</span>
+      <div class="why-title">Focused on Growth</div>
+      <p class="why-text">Websites that generate leads, drive conversions, and compound in value — measured by your business metrics.</p>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">🤝</span>
+      <div class="why-title">Ongoing Support</div>
+      <p class="why-text">A partner, not just a vendor. We're here every step of the way — from launch day through every major milestone.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="work-header">
+    <div>
+      <div class="section-eye">Our Work</div>
+      <h2>Built to Be Seen</h2>
+    </div>
+    <a href="#cta" class="btn-outline" style="font-size:0.75rem; padding:10px 22px;">See All Projects</a>
+  </div>
+  <div class="work-grid">
+    <div class="work-item">
+      <div class="work-bg bg-1 bg-ui"></div>
+      <div class="work-overlay">
+        <div class="work-tag">E-Commerce · Retail</div>
+        <div class="work-title">Meridian Goods — Full Storefront</div>
+      </div>
+    </div>
+    <div class="work-item">
+      <div class="work-bg bg-2 bg-ui"></div>
+      <div class="work-overlay">
+        <div class="work-tag">SaaS · B2B</div>
+        <div class="work-title">Axiom Platform</div>
+      </div>
+    </div>
+    <div class="work-item">
+      <div class="work-bg bg-3 bg-ui"></div>
+      <div class="work-overlay">
+        <div class="work-tag">Healthcare · Web App</div>
+        <div class="work-title">MedTrack Dashboard</div>
+      </div>
+    </div>
+    <div class="work-item">
+      <div class="work-bg bg-4 bg-ui"></div>
+      <div class="work-overlay">
+        <div class="work-tag">Finance · Corporate</div>
+        <div class="work-title">Valta Capital</div>
+      </div>
+    </div>
+    <div class="work-item">
+      <div class="work-bg bg-5 bg-ui"></div>
+      <div class="work-overlay">
+        <div class="work-tag">Hospitality · Brand</div>
+        <div class="work-title">Norde Hotels Group</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-inner">
+    <div class="section-eye" style="justify-content:center;">Let's Build Something Great</div>
+    <h2 class="cta-title">Your Next Website<br><span>Starts Here.</span></h2>
+    <p class="cta-sub">Tell us about your project and we'll show you exactly how we'd bring it to life — no obligation, no jargon.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="#" class="btn-primary" onclick="openModal();return false;">Get a Free Quote</a>
+      <a href="tel:+2349118979055" class="btn-outline">Talk to the Team</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">INT<span>L</span></div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.68rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--dim);margin-top:2px;">Website Creation</div>
+      <p class="footer-tagline" style="margin-top:1rem;">Professional websites. Powerful results. We build digital presences that earn trust and drive growth.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Web Design</a></li>
+        <li><a href="#services">Web Creation</a></li>
+        <li><a href="#services">Website Development</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#why">About Us</a></li>
+        <li><a href="#work">Portfolio</a></li>
+        <li><a href="#cta">Contact</a></li>
+        <li><a href="#cta">Careers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:ajayijohnopeyemi@gmail.com">ajayijohnopeyemi@gmail.com</a></li>
+        <li><a href="tel:+2349118979055">+234 911 897 9055</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 INTL Website Creation. All rights reserved.</div>
+    <div class="footer-socials">
+      <a class="social-btn" href="#" aria-label="LinkedIn">in</a>
+      <a class="social-btn" href="#" aria-label="X/Twitter">𝕏</a>
+      <a class="social-btn" href="#" aria-label="Instagram">ig</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ GET STARTED MODAL ══ -->
+<div id="modal-overlay" onclick="if(event.target===this)closeModal()" style="
+  display:none; position:fixed; inset:0; z-index:999;
+  background:rgba(2,5,15,0.85); backdrop-filter:blur(8px);
+  align-items:center; justify-content:center; padding:20px;
+">
+  <div id="modal-box" style="
+    background:#080F22; border:1px solid rgba(26,110,245,0.25);
+    width:100%; max-width:580px; max-height:90vh; overflow-y:auto;
+    position:relative; padding:48px 44px 40px;
+    box-shadow:0 0 80px rgba(26,110,245,0.12);
+  ">
+    <!-- Close -->
+    <button onclick="closeModal()" style="
+      position:absolute; top:18px; right:20px;
+      background:none; border:none; cursor:pointer;
+      color:#4A6080; font-size:1.4rem; line-height:1;
+      transition:color 0.2s;
+    " onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#4A6080'">✕</button>
+
+    <!-- Header -->
+    <div style="margin-bottom:28px;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.4em;text-transform:uppercase;color:#4B9FFF;margin-bottom:8px;display:flex;align-items:center;gap:8px;">
+        <span style="display:block;width:20px;height:1px;background:#1A6EF5;"></span>Start Your Project
+      </div>
+      <h3 style="font-family:'Orbitron',sans-serif;font-size:1.55rem;font-weight:700;color:#fff;line-height:1.15;">Tell Us About<br>Your Business</h3>
+      <p style="font-size:0.87rem;color:#A8C4E8;margin-top:8px;line-height:1.6;">Fill in your details and we'll get back to you within 24 hours.</p>
+    </div>
+
+    <!-- Form -->
+    <div id="modal-form">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
+        <div>
+          <label style="font-family:'Barlow Condensed',sans-serif;font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;color:#4A6080;display:block;margin-bottom:6px;">Your Name *</label>
+          <input id="f-name" type="text" placeholder="John Smith" style="width:100%;background:#04091A;border:1px solid rgba(26,110,245,0.2);color:#E8F0FC;padding:11px 14px;font-family:'Inter',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='#1A6EF5'" onblur="this.style.borderColor='rgba(26,110,245,0.2)'">
+        </div>
+        <div>
+          <label style="font-family:'Barlow Condensed',sans-serif;font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;color:#4A6080;display:block;margin-bottom:6px;">Business Name *</label>
+          <input id="f-biz" type="text" placeholder="Acme Inc." style="width:100%;background:#04091A;border:1px solid rgba(26,110,245,0.2);color:#E8F0FC;padding:11px 14px;font-family:'Inter',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='#1A6EF5'" onblur="this.style.borderColor='rgba(26,110,245,0.2)'">
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
+        <div>
+          <label style="font-family:'Barlow Condensed',sans-serif;font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;color:#4A6080;display:block;margin-bottom:6px;">Email Address *</label>
+          <input id="f-email" type="email" placeholder="you@company.com" style="width:100%;background:#04091A;border:1px solid rgba(26,110,245,0.2);color:#E8F0FC;padding:11px 14px;font-family:'Inter',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='#1A6EF5'" onblur="this.style.borderColor='rgba(26,110,245,0.2)'">
+        </div>
+        <div>
+          <label style="font-family:'Barlow Condensed',sans-serif;font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;color:#4A6080;display:block;margin-bottom:6px;">Phone Number</label>
+          <input id="f-phone" type="tel" placeholder="+234 800 000 0000" style="width:100%;background:#04091A;border:1px solid rgba(26,110,245,0.2);color:#E8F0FC;padding:11px 14px;font-family:'Inter',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='#1A6EF5'" onblur="this.style.borderColor='rgba(26,110,245,0.2)'">
+        </div>
+      </div>
+      <div style="margin-bottom:14px;">
+        <label style="font-family:'Barlow Condensed',sans-serif;font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;color:#4A6080;display:block;margin-bottom:6px;">Service Needed *</label>
+        <select id="f-service" style="width:100%;background:#04091A;border:1px solid rgba(26,110,245,0.2);color:#E8F0FC;padding:11px 14px;font-family:'Inter',sans-serif;font-size:0.88rem;outline:none;appearance:none;cursor:pointer;transition:border-color 0.2s;" onfocus="this.style.borderColor='#1A6EF5'" onblur="this.style.borderColor='rgba(26,110,245,0.2)'">
+          <option value="" disabled selected style="color:#4A6080;">Select a service…</option>
+          <option value="Web Design">Web Design</option>
+          <option value="Web Creation">Web Creation</option>
+          <option value="Website Development">Website Development</option>
+          <option value="Not sure yet">Not sure yet — advise me</option>
+        </select>
+      </div>
+      <div style="margin-bottom:14px;">
+        <label style="font-family:'Barlow Condensed',sans-serif;font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;color:#4A6080;display:block;margin-bottom:6px;">Industry / Business Type</label>
+        <input id="f-industry" type="text" placeholder="e.g. Retail, Healthcare, Real Estate…" style="width:100%;background:#04091A;border:1px solid rgba(26,110,245,0.2);color:#E8F0FC;padding:11px 14px;font-family:'Inter',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='#1A6EF5'" onblur="this.style.borderColor='rgba(26,110,245,0.2)'">
+      </div>
+      <div style="margin-bottom:22px;">
+        <label style="font-family:'Barlow Condensed',sans-serif;font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;color:#4A6080;display:block;margin-bottom:6px;">Tell Us About Your Project</label>
+        <textarea id="f-msg" rows="4" placeholder="What are your goals? Any specific features or pages you need?" style="width:100%;background:#04091A;border:1px solid rgba(26,110,245,0.2);color:#E8F0FC;padding:11px 14px;font-family:'Inter',sans-serif;font-size:0.88rem;outline:none;resize:vertical;transition:border-color 0.2s;" onfocus="this.style.borderColor='#1A6EF5'" onblur="this.style.borderColor='rgba(26,110,245,0.2)'"></textarea>
+      </div>
+      <div id="f-error" style="display:none;color:#FF6B6B;font-size:0.82rem;margin-bottom:14px;font-family:'Barlow Condensed',sans-serif;letter-spacing:0.05em;"></div>
+      <button onclick="submitForm()" style="
+        width:100%;background:#1A6EF5;color:#fff;border:none;cursor:pointer;
+        font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;
+        letter-spacing:0.2em;text-transform:uppercase;padding:15px;
+        clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
+        transition:background 0.2s,box-shadow 0.2s;
+      " onmouseover="this.style.background='#4B9FFF';this.style.boxShadow='0 0 30px rgba(26,110,245,0.4)'" onmouseout="this.style.background='#1A6EF5';this.style.boxShadow='none'">
+        Send My Details →
+      </button>
+    </div>
+
+    <!-- Success State -->
+    <div id="modal-success" style="display:none;text-align:center;padding:20px 0;">
+      <div style="font-size:3rem;margin-bottom:16px;">✅</div>
+      <h3 style="font-family:'Orbitron',sans-serif;font-size:1.3rem;color:#fff;margin-bottom:10px;">We've Got Your Details!</h3>
+      <p style="font-size:0.9rem;color:#A8C4E8;line-height:1.65;margin-bottom:24px;">Thanks for reaching out. Our team will review your project and contact you at <strong id="success-email" style="color:#4B9FFF;"></strong> within 24 hours.</p>
+      <button onclick="closeModal()" style="background:transparent;border:1px solid rgba(26,110,245,0.3);color:#A8C4E8;font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;letter-spacing:0.2em;text-transform:uppercase;padding:11px 28px;cursor:pointer;">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openModal() {
+    const overlay = document.getElementById('modal-overlay');
+    overlay.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    // Reset form state
+    document.getElementById('modal-form').style.display = 'block';
+    document.getElementById('modal-success').style.display = 'none';
+    document.getElementById('f-error').style.display = 'none';
+  }
+  function closeModal() {
+    document.getElementById('modal-overlay').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  function submitForm() {
+    const name    = document.getElementById('f-name').value.trim();
+    const biz     = document.getElementById('f-biz').value.trim();
+    const email   = document.getElementById('f-email').value.trim();
+    const service = document.getElementById('f-service').value;
+    const phone   = document.getElementById('f-phone').value.trim();
+    const industry= document.getElementById('f-industry').value.trim();
+    const msg     = document.getElementById('f-msg').value.trim();
+    const err     = document.getElementById('f-error');
+
+    if (!name || !biz || !email || !service) {
+      err.textContent = '⚠ Please fill in all required fields (Name, Business, Email, Service).';
+      err.style.display = 'block';
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      err.textContent = '⚠ Please enter a valid email address.';
+      err.style.display = 'block';
+      return;
+    }
+    err.style.display = 'none';
+
+    // Build mailto link and open it
+    const subject = encodeURIComponent('New Project Enquiry — ' + biz);
+    const body = encodeURIComponent(
+      'Name: ' + name + '\n' +
+      'Business: ' + biz + '\n' +
+      'Email: ' + email + '\n' +
+      'Phone: ' + (phone || 'Not provided') + '\n' +
+      'Industry: ' + (industry || 'Not provided') + '\n' +
+      'Service: ' + service + '\n\n' +
+      'Project Details:\n' + (msg || 'No additional details provided.')
+    );
+    window.location.href = 'mailto:ajayijohnopeyemi@gmail.com?subject=' + subject + '&body=' + body;
+
+    // Show success
+    document.getElementById('success-email').textContent = email;
+    document.getElementById('modal-form').style.display = 'none';
+    document.getElementById('modal-success').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
